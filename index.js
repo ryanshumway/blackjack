@@ -1,9 +1,8 @@
-// let firstCard = '';
-// let secondCard = '';
 let firstCard = Math.floor(Math.random() * 11) + 1;
 let secondCard = Math.floor(Math.random() * 11) + 1;
 
 let cardsArray = [firstCard, secondCard];
+cardsArray.push(4)
 
 let sum = firstCard + secondCard;
 let cards = document.getElementById('cards');
@@ -17,12 +16,6 @@ let buttonText = document.getElementById('buttonText');
 let newCardButton = document.getElementById('drawNewCard');
 
 newCardButton.style.opacity = '0';
-
-// function generateNumbers() {
-//   firstCard = Math.floor(Math.random() * 11) + 1;
-//   secondCard = Math.floor(Math.random() * 11) + 1;
-//   sum = firstCard + secondCard;
-// }
 
 function renderGame() {
   if (sum <= 20) {
