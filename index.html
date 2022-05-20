@@ -13,11 +13,11 @@
     <main class="container">
         <h1 class="headerTitle">BlackJack</h1>
         <p class="message-el" id="messageEl">Wanna play a round?</p>
-        <button class="button" onclick="renderGame()" id="buttonText">
+        <button class="button" onclick="renderGame(), smartMessageEl()" id="buttonText">
             Start Game
         </button>
-        <button class="button" onclick="newCard()" id="newCardButton">New Card</button>
-        <h2 class="mainContent" id="cards""></h2>
+        <button class="button" onclick="newCard(), smartMessageEl()" id="newCardButton">New Card</button>
+        <h2 class="mainContent" id="cards"></h2>
         <h1 class=" sum">Sum:</h1>
             <h1 id="sum"></h1>
     </main>
