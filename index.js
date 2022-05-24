@@ -1,53 +1,53 @@
 let firstCard = Math.floor(Math.random() * 11) + 1;
 let secondCard = Math.floor(Math.random() * 11) + 1;
-
 let cardsArray = [firstCard, secondCard];
 
 let sum = firstCard + secondCard;
-let cards = document.getElementById('cards');
-let sumDisplay = document.getElementById('sum');
 
 let hasBlackJack = false;
 let isAlive = true;
 let message = '';
+
+let cardsEl = document.getElementById('cards-el');
+let sumDisplay = document.getElementById('sum');
 let messageEl = document.getElementById('messageEl');
 let buttonText = document.getElementById('buttonText');
+let newGameText = document.getElementById('newGameButton');
 let newCardButton = document.getElementById('drawNewCard');
 
-newCardButton.style.opacity = '0';
-
 function renderGame() {
+  cardsEl.textContent = "Cards: "
+  for (let i = 0; i < cardsArray.length; i++) {
+    cardsEl.textContent += cardsArray[i] + " "
+  }
+  sumDisplay.textContent = sum;
   if (sum <= 20) {
-    
+    message = 'do you want to draw another card?';
   } else if (sum === 21) {
-    
-    
-    messageEl.textContent = message;
+    message = 'You have blackjack!';
+    hasBlackJack = true
   } else {
     isAlive = false;
     buttonText.textContent = 'Start Over'
+    message = 'Shucks, you lost.';
   }
-  cards.textContent = 'Cards: ' + cardsArray[0] + ' ' + cardsArray[1];
-  sumDisplay.textContent = sum;
+  messageEl.textContent = message
 }
 
 function newCard() {
   let thirdCard = Math.floor(Math.random() * 11) + 1;
   sum += thirdCard;
-  sumDisplay.textContent = sum + thirdCard;
   cardsArray.push(thirdCard);
   renderGame();
 }
 
-function smartMessageEl() {
-  if (sum > 21) {
-    message = 'Shucks, you lost.';
-    messageEl.textContent = message
-  } else if (sum === 21) {
-    message = 'You have blackjack!';
-    messageEl.textContent = message
-  } else {
-    message = 'do you want to draw another card?';
-    messageEl.textContent = message;
+function isGameOver() {
+  if (sum < 21) {
+    buttonText.style.display = 'none'
+    newGameText.style.display = true
+  } else if (sum > 21) {
+    buttonText.style.display = 'none'
+  } else if(sum < 21) {
+    newGameText.style.display = 'none'
   }
 }
